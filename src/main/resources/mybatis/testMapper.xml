@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.codivplus.dao.DataDao">
+    <insert id="insertGenAgeCase" parameterType="Map">
+         replace into GEN_AGE_CASE
+         values(date_format(#{create_dt},'%Y%m%d'),#{gubun},#{conf_case},#{conf_case_rate},#{death},#{death_rate},#{critical_rate})
+    </insert>
+    <insert id="insertTotalCase" parameterType="Map">
+         replace into TOTAL_CASE
+         values
+         (date_format(#{create_dt},'%Y%m%d')
+         ,#{decide_cnt}
+         ,#{clear_cnt}
+         ,#{exam_cnt}
+         ,#{death_cnt}
+         ,#{care_cnt}
+         ,#{resutl_neg_cnt}
+         ,#{acc_exam_cnt}
+         ,#{acc_exam_comp_cnt}
+         ,#{acc_def_rate})
+    </insert>
+    
+    <insert id="insertSiDoCase" parameterType="Map">
+    	REPLACE INTO covidplus.si_do_case
+		(CREATE_DT, GUBUN, INC_DEC, ISOL_CLEAR_CNT, DEATH_CNT, QUR_RATE, DEF_CNT, ISOL_ING_CNT, OVER_FLOW_CNT, LOCAL_OCC_CNT)
+		VALUES(date_format(#{create_dt},'%Y%m%d')
+		, #{gubun}
+		, #{inc_dec}
+		, #{isol_clear_cnt}
+		, #{death_cnt}
+		, #{qur_rate}
+		, #{def_cnt}
+		, #{isol_ing_cnt}
+		, #{over_flow_cnt}
+		, #{local_occ_cnt});
+    </insert>
+    
+    <insert id="insertNatCase" parameterType="Map">
+    	REPLACE INTO covidplus.nat_case
+		(CREATE_DT, AREA_NM, NATION_NM, NAT_DEF_CNT, NAT_DEATH_CNT, NAT_DEATH_RATE)
+		VALUES(date_format(#{create_dt},'%Y%m%d')
+		, #{area_nm}
+		, #{nation_nm}
+		, #{nat_def_cnt}
+		, #{nat_death_cnt}
+		, #{nat_death_rate});
+    </insert>
+</mapper>

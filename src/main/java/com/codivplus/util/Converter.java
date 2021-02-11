@@ -24,7 +24,9 @@ public class Converter {
 	        for (int i = 0 ; i < inputSize ; i++) {
 	            if (Character.isUpperCase(input.charAt(i))) {
 	                String str = String.valueOf(input.charAt(i));
-	                input = input.replace(str, "_" + str.toLowerCase()); 
+	                input = input.replace(str, "_" + str.toLowerCase());
+	                inputSize++;
+	            	i++;
 	            }
 	        }
 

@@ -3,27 +3,22 @@ package com.codivplus.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+
+import com.codivplus.model.DataSourceConfig;
 
 @Component
 public class APIParser {
 	@Autowired
-	private Environment environment;
-	
-	String startCreateDt;
-	String endCreateDt;
+	private DataSourceConfig dataSourceConfig;
 	
 	public String APIParsing(String key) throws IOException {
 		URL url = new URL(URLPathMaking(key));
@@ -49,29 +44,30 @@ public class APIParser {
 	}
 	
 	public String URLPathMaking(String key) {
-		setDateType(key);
-		StringBuilder urlBuilder = new StringBuilder(environment.getProperty(key+".ServiceURL")); /*URL*/
+		Map<String,Object> configMap = dataSourceConfig.getParsing_list().get(key);
+		Map<String,String> paramMap = (Map<String, String>) configMap.get("param");
+		setDateType(configMap);
+		StringBuilder urlBuilder = new StringBuilder((String)configMap.get("ServiceURL")); /*URL*/
         try {
-			urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + environment.getProperty(key+".ServiceKey"));
-			urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(environment.getProperty(key+".pageNo"), "UTF-8")); /*페이지번호*/
-		    urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode(environment.getProperty(key+".numOfRows"), "UTF-8")); /*한 페이지 결과 수*/
-		    urlBuilder.append("&" + URLEncoder.encode("startCreateDt","UTF-8") + "=" + URLEncoder.encode(startCreateDt, "UTF-8")); /*검색할 생성일 범위의 시작*/
-		    urlBuilder.append("&" + URLEncoder.encode("endCreateDt","UTF-8") + "=" + URLEncoder.encode(endCreateDt, "UTF-8")); /*검색할 생성일 범위의 종료*/
-		} catch (UnsupportedEncodingException e) {
+			urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=" + (String)configMap.get("ServiceKey"));
+			for (String param : paramMap.keySet()) {
+				urlBuilder.append("&" + URLEncoder.encode(param,"UTF-8") + "=" + URLEncoder.encode(paramMap.get(param), "UTF-8")); /*페이지번호*/
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
         return urlBuilder.toString();
 	}
 	
-	public void setDateType(String key){
+	public void setDateType(Map<String, Object> configMap){
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		Date date = new Date();
-		if(environment.getProperty(key+".todayCreateDt").equals("true")) {
-			startCreateDt = sdf.format(date);
-			endCreateDt = sdf.format(date);
-		}else {
-			startCreateDt = environment.getProperty(key+".startCreateDt");
-			endCreateDt = environment.getProperty(key+".endCreateDt");
+		boolean dateBool = configMap.get("Today")!=null?(boolean)configMap.get("Today"):false;
+		if(dateBool) {
+			Map<String,String> dateParam = (Map<String,String>)configMap.get("DateParam");
+			for (String key:dateParam.keySet()) {
+				((Map<String,String>)configMap.get("param")).put(dateParam.get(key), sdf.format(date));
+			}
 		}
 	}
 }

@@ -1,0 +1,72 @@
+parsing-key: GenAgeCase,TotalCase,SiDoCase,NatCase,HospListA0,HospList97,HospList99
+parsing-data:
+  parsing_list:
+    GenAgeCase:
+      ServiceURL: http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19GenAgeCaseInfJson
+      ServiceKey: qZROU8a65Qg61gcpCNbiF8qSlva%2BjIT%2BunGeegk5cAlERCnjPYcMosujUQ49F7ZWt2TfOJdgy8Lowjinys6%2BeQ%3D%3D
+      DateParam:
+      - startCreateDt
+      - endCreateDt
+      Today: false
+      param:
+        pageNo: '1'
+        numOfRows: '10'
+        startCreateDt: '20200501'
+        endCreateDt: '20200510'
+    TotalCase:
+      ServiceURL: http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson
+      ServiceKey: qZROU8a65Qg61gcpCNbiF8qSlva%2BjIT%2BunGeegk5cAlERCnjPYcMosujUQ49F7ZWt2TfOJdgy8Lowjinys6%2BeQ%3D%3D
+      DateParam:
+      - startCreateDt
+      - endCreateDt
+      Today: true
+      param:
+        pageNo: '1'
+        numOfRows: '10'
+        startCreateDt: '20200501'
+        endCreateDt: '20200510'
+    SiDoCase:
+      ServiceURL: http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson
+      ServiceKey: qZROU8a65Qg61gcpCNbiF8qSlva%2BjIT%2BunGeegk5cAlERCnjPYcMosujUQ49F7ZWt2TfOJdgy8Lowjinys6%2BeQ%3D%3D
+      DateParam:
+      - startCreateDt
+      - endCreateDt
+      Today: true
+      param:
+        pageNo: '1'
+        numOfRows: '10'
+        startCreateDt: '20200501'
+        endCreateDt: '20200510'
+    NatCase:
+      ServiceURL: http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19NatInfStateJson
+      ServiceKey: qZROU8a65Qg61gcpCNbiF8qSlva%2BjIT%2BunGeegk5cAlERCnjPYcMosujUQ49F7ZWt2TfOJdgy8Lowjinys6%2BeQ%3D%3D
+      DateParam:
+      - startCreateDt
+      - endCreateDt
+      Today: true
+      param:
+        pageNo: '1'
+        numOfRows: '10'
+        startCreateDt: '20200501'
+        endCreateDt: '20200510'
+    HospListA0:
+      ServiceURL: http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList
+      ServiceKey: qZROU8a65Qg61gcpCNbiF8qSlva%2BjIT%2BunGeegk5cAlERCnjPYcMosujUQ49F7ZWt2TfOJdgy8Lowjinys6%2BeQ%3D%3D
+      param:
+        pageNo: '1'
+        numOfRows: '1000'
+        spclAdmTyCd: A0
+    HospList97:
+      ServiceURL: http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList
+      ServiceKey: qZROU8a65Qg61gcpCNbiF8qSlva%2BjIT%2BunGeegk5cAlERCnjPYcMosujUQ49F7ZWt2TfOJdgy8Lowjinys6%2BeQ%3D%3D
+      param:
+        pageNo: '1'
+        numOfRows: '1000'
+        spclAdmTyCd: '97'
+    HospList99:
+      ServiceURL: http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList
+      ServiceKey: qZROU8a65Qg61gcpCNbiF8qSlva%2BjIT%2BunGeegk5cAlERCnjPYcMosujUQ49F7ZWt2TfOJdgy8Lowjinys6%2BeQ%3D%3D
+      param:
+        pageNo: '1'
+        numOfRows: '1000'
+        spclAdmTyCd: '99'

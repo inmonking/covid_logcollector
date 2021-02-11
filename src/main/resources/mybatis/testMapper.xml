@@ -45,4 +45,40 @@
 		, #{nat_death_cnt}
 		, #{nat_death_rate});
     </insert>
+    
+    <insert id="insertHospListA0" parameterType="Map">
+	    REPLACE INTO covidplus.host_list
+		(SIDO_NM, SGGU_NM, YADM_NM, HOSP_TY_TP_CD, TELNO, ADT_FR_DD, SPCL_ADM_TY_CD)
+		VALUES(#{sido_nm}
+		, #{sggu_nm}
+		, #{yadm_nm}
+		, #{host_ty_tp_cd}
+		, #{telno}
+		, #{adt_fr_dd}
+		, #{spcl_adm_ty_cd});
+    </insert>
+    
+    <insert id="insertHospList97" parameterType="Map">
+	    REPLACE INTO covidplus.host_list
+		(SIDO_NM, SGGU_NM, YADM_NM, HOSP_TY_TP_CD, TELNO, ADT_FR_DD, SPCL_ADM_TY_CD)
+		VALUES(#{sido_nm}
+		, #{sggu_nm}
+		, #{yadm_nm}
+		, #{host_ty_tp_cd}
+		, #{telno}
+		, #{adt_fr_dd}
+		, #{spcl_adm_ty_cd});
+    </insert>
+    
+    <insert id="insertHospList99" parameterType="Map">
+	    REPLACE INTO covidplus.host_list
+		(SIDO_NM, SGGU_NM, YADM_NM, HOSP_TY_TP_CD, TELNO, ADT_FR_DD, SPCL_ADM_TY_CD)
+		VALUES(#{sido_nm}
+		, #{sggu_nm}
+		, #{yadm_nm}
+		, #{host_ty_tp_cd}
+		, #{telno}
+		, #{adt_fr_dd}
+		, #{spcl_adm_ty_cd});
+    </insert>
 </mapper>

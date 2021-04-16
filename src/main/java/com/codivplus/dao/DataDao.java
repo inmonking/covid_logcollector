@@ -13,4 +13,6 @@ public interface DataDao {
 	public void insertHospListA0(Map<String,Object> map);
 	public void insertHospList97(Map<String,Object> map);
 	public void insertHospList99(Map<String,Object> map);
+	
+	public String selectLastDate(String key);
 }

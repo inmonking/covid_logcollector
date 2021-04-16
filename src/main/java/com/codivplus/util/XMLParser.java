@@ -16,6 +16,8 @@ import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathFactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
@@ -30,6 +32,8 @@ import ch.qos.logback.core.joran.util.beans.BeanUtil;
 
 @Component
 public class XMLParser {
+	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
 	public List<Map<String,Object>> XMLParsing(String XMLData) throws IOException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true);
@@ -60,6 +64,7 @@ public class XMLParser {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
+		logger.info("Parsing Count : "+returnList.size());
 		return returnList;
 	}
 }

@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.codivplus.dao.DataDao">
     <insert id="insertGenAgeCase" parameterType="Map">
-         replace into GEN_AGE_CASE
+         replace into covidplus.gen_age_case
          values(date_format(#{create_dt},'%Y%m%d'),#{gubun},#{conf_case},#{conf_case_rate},#{death},#{death_rate},#{critical_rate})
     </insert>
     <insert id="insertTotalCase" parameterType="Map">
-         replace into TOTAL_CASE
+         replace into covidplus.total_case
          values
          (date_format(#{create_dt},'%Y%m%d')
          ,#{decide_cnt}
@@ -81,4 +81,10 @@
 		, #{adt_fr_dd}
 		, #{spcl_adm_ty_cd});
     </insert>
+    
+    <select id="selectLastDate" resultType="String" parameterType="String">
+    	select 
+    		coalesce(DATE_FORMAT(DATE_ADD(max(create_dt),INTERVAL 1 day),'%Y%m%d'),'20200101') 
+    	from ${tableName}
+    </select>
 </mapper>

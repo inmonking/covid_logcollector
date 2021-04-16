@@ -1,3 +1,4 @@
+last2today-update: true
 parsing-key: GenAgeCase,TotalCase,SiDoCase,NatCase,HospListA0,HospList97,HospList99
 parsing-data:
   parsing_list:
@@ -7,12 +8,14 @@ parsing-data:
       DateParam:
       - startCreateDt
       - endCreateDt
-      Today: false
+      Today: true
       param:
         pageNo: '1'
         numOfRows: '10'
         startCreateDt: '20200501'
-        endCreateDt: '20200510'
+        endCreateDt: '20210409'
+      tableName: gen_age_case
+      paringInfo: 성별, 연령별 통계
     TotalCase:
       ServiceURL: http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson
       ServiceKey: qZROU8a65Qg61gcpCNbiF8qSlva%2BjIT%2BunGeegk5cAlERCnjPYcMosujUQ49F7ZWt2TfOJdgy8Lowjinys6%2BeQ%3D%3D
@@ -24,7 +27,9 @@ parsing-data:
         pageNo: '1'
         numOfRows: '10'
         startCreateDt: '20200501'
-        endCreateDt: '20200510'
+        endCreateDt: '20210409'
+      tableName: total_case
+      paringInfo: 일 통계 데이터
     SiDoCase:
       ServiceURL: http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson
       ServiceKey: qZROU8a65Qg61gcpCNbiF8qSlva%2BjIT%2BunGeegk5cAlERCnjPYcMosujUQ49F7ZWt2TfOJdgy8Lowjinys6%2BeQ%3D%3D
@@ -36,7 +41,9 @@ parsing-data:
         pageNo: '1'
         numOfRows: '10'
         startCreateDt: '20200501'
-        endCreateDt: '20200510'
+        endCreateDt: '20210409'
+      tableName: si_do_case
+      paringInfo: 시, 도별 통계
     NatCase:
       ServiceURL: http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19NatInfStateJson
       ServiceKey: qZROU8a65Qg61gcpCNbiF8qSlva%2BjIT%2BunGeegk5cAlERCnjPYcMosujUQ49F7ZWt2TfOJdgy8Lowjinys6%2BeQ%3D%3D
@@ -48,7 +55,9 @@ parsing-data:
         pageNo: '1'
         numOfRows: '10'
         startCreateDt: '20200501'
-        endCreateDt: '20200510'
+        endCreateDt: '20210409'
+      tableName: nat_case
+      paringInfo: 전 세계 통계
     HospListA0:
       ServiceURL: http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList
       ServiceKey: qZROU8a65Qg61gcpCNbiF8qSlva%2BjIT%2BunGeegk5cAlERCnjPYcMosujUQ49F7ZWt2TfOJdgy8Lowjinys6%2BeQ%3D%3D
@@ -56,6 +65,7 @@ parsing-data:
         pageNo: '1'
         numOfRows: '1000'
         spclAdmTyCd: A0
+      tableName: host_list
     HospList97:
       ServiceURL: http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList
       ServiceKey: qZROU8a65Qg61gcpCNbiF8qSlva%2BjIT%2BunGeegk5cAlERCnjPYcMosujUQ49F7ZWt2TfOJdgy8Lowjinys6%2BeQ%3D%3D
@@ -63,6 +73,7 @@ parsing-data:
         pageNo: '1'
         numOfRows: '1000'
         spclAdmTyCd: '97'
+      tableName: host_list
     HospList99:
       ServiceURL: http://apis.data.go.kr/B551182/pubReliefHospService/getpubReliefHospList
       ServiceKey: qZROU8a65Qg61gcpCNbiF8qSlva%2BjIT%2BunGeegk5cAlERCnjPYcMosujUQ49F7ZWt2TfOJdgy8Lowjinys6%2BeQ%3D%3D
@@ -70,3 +81,4 @@ parsing-data:
         pageNo: '1'
         numOfRows: '1000'
         spclAdmTyCd: '99'
+      tableName: host_list
